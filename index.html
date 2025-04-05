@@ -1302,160 +1302,189 @@
     </div>
   </footer>
   
-  <!-- JavaScript -->
-  <script>
-    // Theme Toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    // Check for saved theme
-    if (localStorage.getItem('theme') === 'dark') {
+<!-- JavaScript -->
+<script>
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  
+  // Check for saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
       document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
       themeIcon.classList.replace('fa-sun', 'fa-moon');
     }
-    
-    themeToggle.addEventListener('click', () => {
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
+  });
+  
+  // Mobile Navigation
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  
+  navToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+  
+  // Close mobile nav when clicking a link
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('show');
+    });
+  });
+  
+  // Research Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      
+      // Remove active class from all buttons and contents
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to current button and content
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+  
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 100,
+          behavior: 'smooth'
+        });
       }
     });
-    
-    // Mobile Navigation
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    
-    navToggle.addEventListener('click', () => {
-      nav.classList.toggle('show');
+  });
+  
+  // Neural Network Background Animation
+  const canvas = document.getElementById('neural-network-bg');
+  const ctx = canvas.getContext('2d');
+  
+  // Set canvas dimensions
+  const resizeCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  // Track mouse position
+  const mousePosition = {
+    x: undefined,
+    y: undefined
+  };
+  
+  // Add mouse move event listener
+  window.addEventListener('mousemove', (event) => {
+    mousePosition.x = event.x;
+    mousePosition.y = event.y;
+  });
+  
+  // Neural network nodes and connections
+  const nodes = [];
+  const maxNodes = 50;
+  const connectionDistance = 150;
+  
+  // Create initial nodes
+  for (let i = 0; i < maxNodes; i++) {
+    nodes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 2 + 1,
+      vx: Math.random() * 1 - 0.5,
+      vy: Math.random() * 1 - 0.5
     });
+  }
+  
+  // Animation function
+  function animate() {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Close mobile nav when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('show');
-      });
-    });
-    
-    // Research Tabs
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabId = btn.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and contents
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
-        
-        // Add active class to current button and content
-        btn.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-      });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 100,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // Neural Network Background Animation
-    const canvas = document.getElementById('neural-network-bg');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Neural network nodes and connections
-    const nodes = [];
-    const maxNodes = 50;
-    const connectionDistance = 150;
-    
-    // Create initial nodes
-    for (let i = 0; i < maxNodes; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        vx: Math.random() * 1 - 0.5,
-        vy: Math.random() * 1 - 0.5
-      });
-    }
-    
-    // Animation function
-    function animate() {
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Update node positions
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
       
-      // Update node positions
-      for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
+      // Check for mouse interaction
+      if (mousePosition.x !== undefined && mousePosition.y !== undefined) {
+        const dx = mousePosition.x - node.x;
+        const dy = mousePosition.y - node.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // Move node
-        node.x += node.vx;
-        node.y += node.vy;
+        // Move nodes away from cursor within a certain radius
+        const moveRadius = 100;
+        if (distance < moveRadius) {
+          // Calculate force (stronger when closer)
+          const force = (moveRadius - distance) / moveRadius;
+          // Move away from cursor
+          node.x -= dx * force * 0.03;
+          node.y -= dy * force * 0.03;
+        }
+      }
+      
+      // Original movement
+      node.x += node.vx;
+      node.y += node.vy;
+      
+      // Bounce off edges
+      if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+      if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+      
+      // Draw node
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
+        ? 'rgba(63, 81, 181, 0.6)' 
+        : 'rgba(4, 2, 115, 0.6)';
+      ctx.fill();
+      
+      // Draw connections
+      for (let j = i + 1; j < nodes.length; j++) {
+        const otherNode = nodes[j];
+        const dx = otherNode.x - node.x;
+        const dy = otherNode.y - node.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // Bounce off edges
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-        
-        // Draw node
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
-          ? 'rgba(63, 81, 181, 0.6)' 
-          : 'rgba(4, 2, 115, 0.6)';
-        ctx.fill();
-        
-        // Draw connections
-        for (let j = i + 1; j < nodes.length; j++) {
-          const otherNode = nodes[j];
-          const dx = otherNode.x - node.x;
-          const dy = otherNode.y - node.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < connectionDistance) {
+          ctx.beginPath();
+          ctx.moveTo(node.x, node.y);
+          ctx.lineTo(otherNode.x, otherNode.y);
           
-          if (distance < connectionDistance) {
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(otherNode.x, otherNode.y);
-            
-            // Opacity based on distance
-            const opacity = 1 - distance / connectionDistance;
-            ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
-              ? `rgba(63, 81, 181, ${opacity * 0.3})` 
-              : `rgba(4, 2, 115, ${opacity * 0.3})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
+          // Opacity based on distance
+          const opacity = 1 - distance / connectionDistance;
+          ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? `rgba(63, 81, 181, ${opacity * 0.3})` 
+            : `rgba(4, 2, 115, ${opacity * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
         }
       }
-      
-      requestAnimationFrame(animate);
     }
     
-    // Start animation
-    animate();
+    requestAnimationFrame(animate);
+  }
+  
+  // Start animation
+  animate();
   </script>
 </body>
 </html>
