@@ -17,7 +17,7 @@
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
 
   <style>
 /* Variables for both light and dark mode */
@@ -886,6 +886,30 @@
   transform: scale(1.2);
 }
 
+.recommender-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.recommender-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.orcid-link {
+  color: #A6CE39;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.orcid-link:hover {
+  transform: scale(1.1);
+}
+
+
 @media (max-width: 768px) {
   .recommendation-card {
     flex-direction: column;
@@ -894,6 +918,18 @@
   
   .recommender-image {
     margin: 0 auto;
+  }
+  .recommendation-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .recommender-image {
+    margin: 0 auto;
+  }
+
+  .recommender-header h3 {
+    justify-content: center;
   }
 }
 
@@ -1664,7 +1700,9 @@
           <img src="images/DKarmaker.jpg" alt="Dr. Debajyoti Karmaker">
         </div>
         <div class="recommendation-content">
-          <h3>Dr. Debajyoti Karmaker</h3>
+          <div class="recommender-header">
+            <h3>Dr. Debajyoti Karmaker <a href="https://orcid.org/0000-0003-0020-5391" target="_blank" class="orcid-link" title="ORCID Profile"><i class="fab fa-orcid"></i></a></h3>
+          </div>
           <h4>Associate Professor, Head [Undergraduate Program]</h4>
           <p class="institution">American International University-Bangladesh</p>
           <p class="relation">Research Supervisor</p>
@@ -1679,12 +1717,14 @@
           <img src="images/MFMridha.png" alt="Dr. M. Firoz Mridha">
         </div>
         <div class="recommendation-content">
-          <h3>Dr. M. Firoz Mridha</h3>
+          <div class="recommender-header">
+            <h3>Dr. M. Firoz Mridha <a href="https://orcid.org/0000-0001-5738-1631" target="_blank" class="orcid-link" title="ORCID Profile"><i class="fab fa-orcid"></i></a></h3>
+          </div>
           <h4>Professor</h4>
           <p class="institution">American International University-Bangladesh</p>
           <p class="relation">Research Mentor</p>
           <blockquote>
-            "Working with Nabil in the Advanced Machine Intelligence Research Lab has been a pleasure. His innovative approach to problem-solving and strong technical skills make him an outstanding researcher in deep learning and Computer Vision"
+            "Working with Nabil in the AMIR Lab has been a pleasure. His innovative approach to problem-solving and strong technical skills make him an outstanding researcher in deep learning and Computer Vision"
           </blockquote>
         </div>
       </div>
@@ -1694,7 +1734,9 @@
           <img src="images/MKabir.jpg" alt="Md Mohsin Kabir">
         </div>
         <div class="recommendation-content">
-          <h3>Md Mohsin Kabir</h3>
+          <div class="recommender-header">
+            <h3>Md Mohsin Kabir <a href="https://orcid.org/0000-0001-9624-5499" target="_blank" class="orcid-link" title="ORCID Profile"><i class="fab fa-orcid"></i></a></h3>
+          </div>
           <h4>Lecturer [On Leave], PhD Student</h4>
           <p class="institution">Mälardalens University, Sweden</p>
           <p class="relation">Research Team Lead</p>
