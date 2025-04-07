@@ -762,6 +762,231 @@
     .badge-book {
       background-color: #6b5eae;
     }
+  
+/* Recommendations Section */
+.recommendations-slider {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 400px; /* Add fixed height */
+}
+
+.recommendation-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  transform: translateX(100%);
+}
+
+.recommendation-card.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  position: relative;
+}
+.recommender-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+}
+
+.recommender-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recommendation-content {
+  flex: 1;
+}
+
+.recommendation-content h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.recommendation-content h4 {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.recommendation-content .institution {
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.recommendation-content .relation {
+  color: var(--primary-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.recommendation-content blockquote {
+  font-style: italic;
+  color: var(--text);
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prev-btn,
+.next-btn {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: var(--primary);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .recommendation-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .recommender-image {
+    margin: 0 auto;
+  }
+}
+
+    /* Contact Section */
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--text-light);
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-light);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label {
+  top: -20px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+.form-group .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: 0.3s;
+}
+
+.form-group input:focus ~ .focus-border,
+.form-group textarea:focus ~ .focus-border {
+  width: 100%;
+}
+
+.captcha-container {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+#captcha {
+  background: var(--primary-light);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+#captcha-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--text-light);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
     
     /* Footer */
     footer {
@@ -1017,6 +1242,8 @@
             <li><a href="#education" class="dropdown-item">Education</a></li>
             <li><a href="#skills" class="dropdown-item">Skills</a></li>
             <li><a href="#projects" class="dropdown-item">Projects</a></li>
+            <li><a href="#recommendations" class="dropdown-item">Recommendations</a>
+            <li><a href="#contact" class="dropdown-item">Contact</a>
           </ul>
         </li>
       </ul>
@@ -1226,11 +1453,11 @@
           <p><em>Scientific Reports (Under Review)</em></p>
         </div>
 
-        <div class="research-item">
+        <!-- <div class="research-item">
           <h3><span class="pub-badge badge-journal">Journal</span> A Physics-Guided Bayesian NeuralNetwork for
             Sensor Fault Detection in Wind Turbines</h3>
           <p><em>IEEE Open Journal of the Computer Society (Under Review)</em></p>
-        </div>
+        </div> -->
 
 
         
@@ -1423,6 +1650,114 @@
             </div>
           </div>
         </section>
+
+<!-- Recommendations Section -->
+<section id="recommendations">
+  <div class="container">
+    <div class="section-title">
+      <h2>Recommendations</h2>
+    </div>
+    
+    <div class="recommendations-slider">
+      <div class="recommendation-card active">
+        <div class="recommender-image">
+          <img src="images/DKarmaker.jpg" alt="Dr. Debajyoti Karmaker">
+        </div>
+        <div class="recommendation-content">
+          <h3>Dr. Debajyoti Karmaker</h3>
+          <h4>Associate Professor, Head [Undergraduate Program]</h4>
+          <p class="institution">American International University-Bangladesh</p>
+          <p class="relation">Research Supervisor</p>
+          <blockquote>
+            "Nabil has demonstrated exceptional research capabilities in deep learning. His dedication to advancing AI is truly remarkable."
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="recommendation-card">
+        <div class="recommender-image">
+          <img src="images/MFMridha.png" alt="Dr. M. Firoz Mridha">
+        </div>
+        <div class="recommendation-content">
+          <h3>Dr. M. Firoz Mridha</h3>
+          <h4>Professor</h4>
+          <p class="institution">American International University-Bangladesh</p>
+          <p class="relation">Research Mentor</p>
+          <blockquote>
+            "Working with Nabil in the AMIR Lab has been a pleasure. His innovative approach to problem-solving and strong technical skills make him an outstanding researcher in deep learning and Computer Vision"
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="recommendation-card">
+        <div class="recommender-image">
+          <img src="images/MKabir.jpg" alt="Md Mohsin Kabir">
+        </div>
+        <div class="recommendation-content">
+          <h3>Md Mohsin Kabir</h3>
+          <h4>Lead Researcher, Lecturer [On Leave]</h4>
+          <p class="institution">Advanced Machine Intelligence Research Lab</p>
+          <p class="relation"></p>
+          <blockquote>
+            "Nabil's work in deep learning and computer vision shows exceptional promise. His ability to tackle complex problems and deliver innovative solutions is impressive."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slider-controls">
+      <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+      <div class="slider-dots"></div>
+      <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+        <!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Let's Connect</h2>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" required>
+          <label for="name">Your Name</label>
+          <span class="focus-border"></span>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="email" required>
+          <label for="email">Your Email</label>
+          <span class="focus-border"></span>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="subject" required>
+          <label for="subject">Subject</label>
+          <span class="focus-border"></span>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="message" required></textarea>
+          <label for="message">Message</label>
+          <span class="focus-border"></span>
+        </div>
+
+        <div class="captcha-container">
+          <div id="captcha"></div>
+          <input type="text" id="captcha-input" placeholder="Enter the code above">
+        </div>
+
+        <button type="submit" id="send-btn" class="btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
          <!-- Footer -->
   <footer>
     <div class="container">
@@ -1438,6 +1773,122 @@
   
 <!-- JavaScript -->
 <script>
+// Recommendations Slider
+const slider = document.querySelector('.recommendations-slider');
+const cards = document.querySelectorAll('.recommendation-card');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const dotsContainer = document.querySelector('.slider-dots');
+
+let currentSlide = 0;
+let autoSlideInterval;
+
+// Create dots
+cards.forEach((_, index) => {
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if (index === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(index));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function updateSlider() {
+  cards.forEach((card, index) => {
+    card.classList.remove('active');
+    if (index === currentSlide) {
+      card.classList.add('active');
+    }
+  });
+  
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateSlider();
+  resetAutoSlide();
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % cards.length;
+  updateSlider();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + cards.length) % cards.length;
+  updateSlider();
+}
+
+function resetAutoSlide() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(nextSlide, 5000);
+}
+
+prevBtn.addEventListener('click', () => {
+  prevSlide();
+  resetAutoSlide();
+});
+
+nextBtn.addEventListener('click', () => {
+  nextSlide();
+  resetAutoSlide();
+});
+
+// Start auto-sliding
+resetAutoSlide();
+
+// Pause auto-sliding when hovering over the slider
+slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+slider.addEventListener('mouseleave', resetAutoSlide);
+  // Contact Form and Captcha
+const generateCaptcha = () => {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let captcha = '';
+  for (let i = 0; i < 6; i++) {
+    captcha += chars[Math.floor(Math.random() * chars.length)];
+  }
+  document.getElementById('captcha').textContent = captcha;
+  return captcha;
+};
+
+let currentCaptcha = generateCaptcha();
+
+document.getElementById('send-btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+  const captchaInput = document.getElementById('captcha-input').value;
+  
+  if (!name || !email || !subject || !message) {
+    alert('Please fill in all fields');
+    return;
+  }
+  
+  if (captchaInput !== currentCaptcha) {
+    alert('Invalid captcha code');
+    currentCaptcha = generateCaptcha();
+    document.getElementById('captcha-input').value = '';
+    return;
+  }
+  
+  const mailtoLink = `mailto:hadiurrahmannabil@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+  window.location.href = mailtoLink;
+  
+  // Reset form
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('subject').value = '';
+  document.getElementById('message').value = '';
+  document.getElementById('captcha-input').value = '';
+  currentCaptcha = generateCaptcha();
+});
   // Theme Toggle
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = themeToggle.querySelector('i');
