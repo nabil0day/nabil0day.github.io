@@ -365,95 +365,95 @@
       height: 3px;
       background-color: var(--primary);
     }
+
+    /* Loader */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--primary-light);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
     
     /* News Section */
     .news {
       /* background-color: var(--secondary); */
     }
     
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      background-color: var(--primary);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -1px;
-    }
-    
-    .timeline-year {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .timeline-year h3 {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background-color: var(--primary);
-      color: var(--white);
-      border-radius: 30px;
-    }
-    
-    .timeline-item {
-      padding: 1rem 2rem;
-      position: relative;
-      width: 50%;
-      margin-bottom: 1.5rem;
-    }
-    
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: var(--card-bg);
-      border: 3px solid var(--primary);
-      border-radius: 50%;
-      top: 1.5rem;
-      z-index: 1;
-      transition: background-color 0.3s ease;
-    }
-    
-    .timeline-item-left {
-      left: 0;
-    }
-    
-    .timeline-item-right {
-      left: 50%;
-    }
-    
-    .timeline-item-left::after {
-      right: -10px;
-    }
-    
-    .timeline-item-right::after {
-      left: -10px;
-    }
-    
-    .timeline-item-content {
-      padding: 1.5rem;
-      background-color: var(--card-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      transition: background-color 0.3s ease;
-    }
-    
-    .timeline-item-content h4 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-    
-    .timeline-item-content p {
-      margin-bottom: 0;
-    }
-    
+/* Update timeline styles */
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 100%;
+  padding-left: 3rem;  /* Add left padding for the timeline line */
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 0;  /* Move line to the left */
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--primary);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;  /* Adjust circle position */
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+/* Remove left/right specific classes as they're no longer needed */
+.timeline-item-left,
+.timeline-item-right {
+  left: 0;
+  width: 100%;
+}
+
+.timeline-item-content {
+  background-color: var(--card-bg);  
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* Update year marker */
+.timeline-year {
+  margin-bottom: 2rem;
+  padding-left: 3rem;  /* Align with content */
+}
     /* Research Section */
     .research-tabs {
       display: flex;
@@ -1251,6 +1251,47 @@
   font-size: 1.2rem;
 }
 
+/* Add this to your existing styles */
+.scroll-top {
+  position: fixed;
+  bottom: 90px;  /* Positioned above the theme toggle */
+  right: 20px;
+  background-color: var(--primary);
+  color: var(--white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: none;  /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.scroll-top:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+.scroll-top.show {
+  display: flex;
+}
+/* Reading Progress Bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-light);
+  z-index: 1002;
+  transition: width 0.1s ease;
+}
+
 
 /* Update mobile styles */
 @media (max-width: 768px) {
@@ -1303,6 +1344,16 @@
   </script>
 </head>
 <body>
+
+    <!-- Loader -->
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress"></div>
+
   <!--Canvas -->
   <canvas id="neural-network-bg"></canvas>
   
@@ -1371,9 +1422,15 @@
     <div class="container">
       <div class="section-title">
         <h2>Recent News</h2>
+        <div class="news-tabs">
+          <button class="tab-btn active" data-year="all">All</button>
+          <button class="tab-btn" data-year="2024">2024</button>
+          <button class="tab-btn" data-year="2023">2023</button>
+        </div>
       </div>
       
-      <div class="timeline">
+      
+      <div class="timeline" id="timeline">
         <div class="timeline-year">
           <h3>2024</h3>
         </div>
@@ -1381,7 +1438,7 @@
         <div class="timeline-item timeline-item-right">
           <div class="timeline-item-content">
             <h4>December 2024</h4>
-            <p>Served as a peer reviewer for the <em>Indonesian Journal of Electrical Engineering and Computer Science</em>, contributing to the academic peer review process and advancement of knowledge in the field.</p>
+            <p>Served as a peer reviewer for the <em> <strong>Indonesian Journal of Electrical Engineering and Computer Science </strong></em>, contributing to the academic peer review process and advancement of knowledge in the field.</p>
           </div>
         </div>
         
@@ -1409,7 +1466,7 @@
         <div class="timeline-item timeline-item-right">
           <div class="timeline-item-content">
             <h4>January 2024</h4>
-            <p>Published inaugural research paper in IEEE Access (Q1 journal). Concurrent with this achievement, received promotion to Research Assistant position at the Advanced Machine Intelligence Research Laboratory, acknowledging research contributions and potential.</p>
+            <p>Published inaugural research paper in IEEE Access (Q1 journal). Concurrent with this achievement, received promotion to <strong>Research Assistant</strong> position at the Advanced Machine Intelligence Research Laboratory, acknowledging research contributions and potential.</p>
           </div>
         </div>
         
@@ -1870,9 +1927,53 @@
       <p class="copyright">&copy; 2025 Hadiur Rahman Nabil. All rights reserved.</p>
     </div>
   </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="scroll-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
   
 <!-- JavaScript -->
 <script>
+
+  // Add this to your JavaScript section
+document.addEventListener('DOMContentLoaded', () => {
+  const newsTabBtns = document.querySelectorAll('.news-tabs .tab-btn');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const timelineYears = document.querySelectorAll('.timeline-year');
+
+  newsTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      newsTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selectedYear = btn.getAttribute('data-year');
+
+      // Show/hide timeline items based on year
+      timelineItems.forEach(item => {
+        const itemYear = item.previousElementSibling?.classList.contains('timeline-year') 
+          ? item.previousElementSibling.textContent.trim()
+          : item.parentElement.querySelector('.timeline-year').textContent.trim();
+
+        if (selectedYear === 'all' || itemYear.includes(selectedYear)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Show/hide year markers
+      timelineYears.forEach(year => {
+        if (selectedYear === 'all' || year.textContent.trim().includes(selectedYear)) {
+          year.style.display = 'block';
+        } else {
+          year.style.display = 'none';
+        }
+      });
+    });
+  });
+});
 // Recommendations Slider
 const slider = document.querySelector('.recommendations-slider');
 const cards = document.querySelectorAll('.recommendation-card');
@@ -1989,27 +2090,40 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
   document.getElementById('captcha-input').value = '';
   currentCaptcha = generateCaptcha();
 });
-  // Theme Toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('i');
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+// Check system theme preference
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// Function to set theme
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeIcon.classList.replace(
+    theme === 'dark' ? 'fa-sun' : 'fa-moon',
+    theme === 'dark' ? 'fa-moon' : 'fa-sun'
+  );
+}
+
   
-  // Check for saved theme
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    themeIcon.classList.replace('fa-sun', 'fa-moon');
+// Check for saved theme or use system preference
+if (localStorage.getItem('theme')) {
+  setTheme(localStorage.getItem('theme'));
+} else {
+  setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+}
+// Listen for theme toggle click
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+// Listen for system theme changes
+prefersDarkScheme.addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    setTheme(e.matches ? 'dark' : 'light');
   }
-  
-  themeToggle.addEventListener('click', () => {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      themeIcon.classList.replace('fa-sun', 'fa-moon');
-    }
-  });
+});
   
   // Mobile Navigation
   const navToggle = document.querySelector('.nav-toggle');
@@ -2043,6 +2157,34 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
       document.getElementById(tabId).classList.add('active');
     });
   });
+
+
+  // Reading Progress Indicator
+const readingProgress = document.querySelector('.reading-progress');
+
+window.addEventListener('scroll', () => {
+  const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (window.scrollY / totalHeight) * 100;
+  readingProgress.style.width = `${progress}%`;
+});
+
+  // Scroll to Top functionality
+const scrollTopBtn = document.getElementById('scroll-top');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {  // Show button after scrolling 300px
+    scrollTopBtn.classList.add('show');
+  } else {
+    scrollTopBtn.classList.remove('show');
+  }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
   
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2058,6 +2200,12 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
       }
     });
   });
+
+  // Loader
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.loader-wrapper');
+  loader.classList.add('fade-out');
+});
   
   // Neural Network Background Animation
   const canvas = document.getElementById('neural-network-bg');
