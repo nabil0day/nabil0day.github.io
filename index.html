@@ -288,16 +288,19 @@
     
     /* Hero Section */
     .hero {
-      padding: 5rem 0 3rem;
-      position: relative;
+      padding-top: 60px;
     }
     
     .hero-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: flex-start; 
     }
+    .hero-content {
+  padding-top: 2rem; /* Add some padding at the top */
+}
+
     
     .hero-content h1 {
       font-size: 2.5rem;
@@ -1371,7 +1374,7 @@
 
 <header>
   <div class="container header-container">
-    <a href="#" class="logo">Hadiur Rahman Nabil</a>
+    <a href="#" class="logo"></a>
     <button class="nav-toggle" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
@@ -1380,7 +1383,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#news" class="nav-link">News</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#research" class="nav-link">Publications</a></li>
         <li class="dropdown">
           <a href="#" class="nav-link dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
@@ -1400,22 +1403,25 @@
   <section class="hero" id="about">
     <div class="container hero-container">
       <div class="hero-content">
-        <h1>AI & Deep Learning Researcher</h1>
-        <p>I am <strong>Hadiur Rahman Nabil</strong>, a B.Sc. graduate in Computer Science and Engineering from American International University-Bangladesh (AIUB). Currently, I serve as a Research Assistant at the Advanced Machine Intelligence Research Lab, where I focus on Deep Learning applications in medical imaging.</p>
-        <p>I am passionate about Deep Learning, particularly in developing efficient and robust models for medical imaging and healthcare applications to enhance diagnostic accuracy and clinical decision-making. Additionally, I have a growing interest in Generative AI and Large Language Models (LLMs), exploring their potential to advance the field of Artificial Intelligence.</p>
+        <h1>Hadiur Rahman Nabil</h1>
+        <p>A B.Sc. graduate in Computer Science and Engineering from <a href="https://www.aiub.edu" target="_blank">American International University-Bangladesh (AIUB)</a>. Currently, I serve as a Research Assistant at the <a href="https://amirl.org/" target="_blank">Advanced Machine Intelligence Research (AMIR) Lab</a>, where I focus on Deep Learning applications in medical imaging.</p>
+        <p>My research interests lie at the intersection of Deep Learning and Computer Vision, with a particular emphasis on developing efficient and interpretable models for medical image analysis. I am passionate about leveraging artificial intelligence to enhance healthcare diagnostics and improve patient outcomes. Additionally, I am exploring emerging areas in Generative AI and Large Language Models (LLMs), investigating their potential applications in healthcare and beyond.</p>
         <div class="social-links">
           <a href="mailto:hadiurrahmannabil@gmail.com" class="btn"><i class="fas fa-envelope"></i> Email</a>
           <a href="#" onclick="alert('Coming soon!');" class="btn"><i class="fas fa-file-alt"></i> CV</a>
           <a href="https://scholar.google.com/citations?hl=en&user=HFySLGEAAAAJ" class="btn"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-          <a href="https://www.linkedin.com/in/nabil0day/" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/nabil0day" class="btn"><i class="fab fa-github"></i> GitHub</a>
+          <div class="social-links-row">
+            <a href="https://www.linkedin.com/in/nabil0day/" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/nabil0day" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://orcid.org/my-orcid?orcid=0009-0005-4311-2875" class="btn"><i class="fab fa-orcid"></i> ORCID</a>
+          </div>
         </div>
       </div>
       <div class="hero-image">
         <img src="images/Nabil.png" alt="Hadiur Rahman Nabil">
       </div>
     </div>
-  </section>
+</section>
   
   <!-- News Section -->
   <section class="news" id="news">
