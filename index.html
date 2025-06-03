@@ -188,7 +188,7 @@
       margin-right: 8px;
     }
     
-    /* Banner */
+    Banner
     .banner {
       background-color: var(--primary);
       color: var(--white);
@@ -213,15 +213,18 @@
     }
     
     /* Header */
-    header {
-      padding: 1.5rem 0;
-      background-color: var(--bg-color);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 43px;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
+/* Header */
+header {
+  padding: .8rem 0;
+  background-color: rgba(var(--card-bg-rgb), 0.8); /* Changed to use rgba for transparency */
+  backdrop-filter: blur(10px); /* Add blur effect for better readability */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 00px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
     
     .header-container {
       display: flex;
@@ -305,6 +308,8 @@
     .hero-content h1 {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
+      color: var(--primary);
+      transition: color 0.3s ease;
     }
     
     .hero-content p {
@@ -1132,13 +1137,19 @@
       }
       
       .nav {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin-left: auto;
         position: absolute;
         top: 100%;
         left: 0;
+        width: max-content; 
         right: 0;
         flex-direction: column;
         align-items: center;
         padding: 1.5rem 0;
+        padding-right: 2rem;
         background-color: var(--bg-color);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         border-radius: 0 0 10px 10px;
@@ -1366,9 +1377,9 @@
   </button>
 
   <!-- Banner -->
-  <div class="banner">
+  <!-- <div class="banner">
     <p>🎓 Prospective <strong>Graduate</strong> Student! 🚀</p>
-  </div>
+  </div> -->
   
   <!-- Header -->
 
@@ -1380,7 +1391,7 @@
     </button>
     <nav>
       <ul class="nav" id="nav">
-        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#about" class="nav-link">Home</a></li>
         <li><a href="#news" class="nav-link">News</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#research" class="nav-link">Publications</a></li>
@@ -1390,7 +1401,7 @@
             <li><a href="#education" class="dropdown-item">Education</a></li>
             <li><a href="#skills" class="dropdown-item">Skills</a></li>
             <li><a href="#projects" class="dropdown-item">Projects</a></li>
-            <li><a href="#recommendations" class="dropdown-item">Recommendations</a>
+            <!-- <li><a href="#recommendations" class="dropdown-item">Recommendations</a> -->
             <li><a href="#contact" class="dropdown-item">Contact</a>
           </ul>
         </li>
@@ -1423,72 +1434,86 @@
     </div>
 </section>
   
-  <!-- News Section -->
-  <section class="news" id="news">
-    <div class="container">
-      <div class="section-title">
-        <h2>Recent News</h2>
-        <div class="news-tabs">
-          <button class="tab-btn active" data-year="all">All</button>
-          <button class="tab-btn" data-year="2024">2024</button>
-          <button class="tab-btn" data-year="2023">2023</button>
+<!-- News Section -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="section-title">
+      <h2>Recent News</h2>
+      <div class="news-tabs">
+        <button class="tab-btn active" data-year="all">All</button>
+        <button class="tab-btn" data-year="2025">2025</button>
+        <button class="tab-btn" data-year="2024">2024</button>
+        <button class="tab-btn" data-year="old">Old News</button>
+      </div>
+    </div>
+    
+    <div class="timeline" id="timeline">
+      <!-- 2025 News -->
+      <div class="timeline-year" data-year="2025">
+        <h3>2025</h3>
+      </div>
+      
+      <div class="timeline-item timeline-item-right" data-year="2025">
+        <div class="timeline-item-content">
+          <h4>January 2025</h4>
+          <p>Looking forward to new research collaborations and opportunities in artificial intelligence and computer vision.</p>
+        </div>
+      </div>
+
+      <!-- 2024 News -->
+      <div class="timeline-year" data-year="2024">
+        <h3>2024</h3>
+      </div>
+      
+      <div class="timeline-item timeline-item-right" data-year="2024">
+        <div class="timeline-item-content">
+          <h4>December 2024</h4>
+          <p>Served as a peer reviewer for the <em> <strong>Indonesian Journal of Electrical Engineering and Computer Science </strong></em>, contributing to the academic peer review process and advancement of knowledge in the field.</p>
         </div>
       </div>
       
+      <div class="timeline-item timeline-item-left" data-year="2024">
+        <div class="timeline-item-content">
+          <h4>November 2024</h4>
+          <p>Research manuscript accepted for publication in the proceedings of the International Conference on Computer and Information Technology (ICCIT 2024). Additionally, a conference paper was successfully accepted at the IEEE Decision Aid Sciences and Applications Conference (DASA'24).</p>
+        </div>
+      </div>
       
-      <div class="timeline" id="timeline">
-        <div class="timeline-year">
-          <h3>2024</h3>
+      <div class="timeline-item timeline-item-right" data-year="2024">
+        <div class="timeline-item-content">
+          <h4>September 2024</h4>
+          <p>Two scholarly publications were accepted for publication in peer-reviewed academic venues, contributing to the advancement of knowledge in the field of artificial intelligence and computer vision.</p>
         </div>
-        
-        <div class="timeline-item timeline-item-right">
-          <div class="timeline-item-content">
-            <h4>December 2024</h4>
-            <p>Served as a peer reviewer for the <em> <strong>Indonesian Journal of Electrical Engineering and Computer Science </strong></em>, contributing to the academic peer review process and advancement of knowledge in the field.</p>
-          </div>
+      </div>
+      
+      <div class="timeline-item timeline-item-left" data-year="2024">
+        <div class="timeline-item-content">
+          <h4>May 2024</h4>
+          <p>Successfully completed undergraduate studies at American International University-Bangladesh with the successful defense of thesis research focused on deep learning applications in medical image analysis.</p>
         </div>
-        
-        <div class="timeline-item timeline-item-left">
-          <div class="timeline-item-content">
-            <h4>November 2024</h4>
-            <p>Research manuscript accepted for publication in the proceedings of the International Conference on Computer and Information Technology (ICCIT 2024). Additionally, a conference paper was successfully accepted at the IEEE Decision Aid Sciences and Applications Conference (DASA'24).</p>
-          </div>
+      </div>
+      
+      <div class="timeline-item timeline-item-right" data-year="2024">
+        <div class="timeline-item-content">
+          <h4>January 2024</h4>
+          <p>Published inaugural research paper in IEEE Access (Q1 journal). Concurrent with this achievement, received promotion to <strong>Research Assistant</strong> position at the Advanced Machine Intelligence Research Laboratory, acknowledging research contributions and potential.</p>
         </div>
-        
-        <div class="timeline-item timeline-item-right">
-          <div class="timeline-item-content">
-            <h4>September 2024</h4>
-            <p>Two scholarly publications were accepted for publication in peer-reviewed academic venues, contributing to the advancement of knowledge in the field of artificial intelligence and computer vision.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item timeline-item-left">
-          <div class="timeline-item-content">
-            <h4>May 2024</h4>
-            <p>Successfully completed undergraduate studies at American International University-Bangladesh with the successful defense of thesis research focused on deep learning applications in medical image analysis.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item timeline-item-right">
-          <div class="timeline-item-content">
-            <h4>January 2024</h4>
-            <p>Published inaugural research paper in IEEE Access (Q1 journal). Concurrent with this achievement, received promotion to <strong>Research Assistant</strong> position at the Advanced Machine Intelligence Research Laboratory, acknowledging research contributions and potential.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-year">
-          <h3>2023</h3>
-        </div>
-        
-        <div class="timeline-item timeline-item-left">
-          <div class="timeline-item-content">
-            <h4>August 2023</h4>
-            <p>Commenced academic research career as Research Intern at the Advanced Machine Intelligence Research Laboratory, focusing on applications of deep learning to problems in medical imaging and diagnostics.</p>
-          </div>
+      </div>
+      
+      <!-- Old News (2023 and earlier) -->
+      <div class="timeline-year" data-year="old">
+        <h3>Old News</h3>
+      </div>
+      
+      <div class="timeline-item timeline-item-left" data-year="old">
+        <div class="timeline-item-content">
+          <h4>August 2023</h4>
+          <p>Commenced academic research career as Research Intern at the Advanced Machine Intelligence Research Laboratory, focusing on applications of deep learning to problems in medical imaging and diagnostics.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Education Section -->
 <section class="education" id="education">
@@ -1627,7 +1652,7 @@
 
         <div class="research-item">
           <h3><span class="pub-badge badge-journal">Journal</span> Advancements in deep learning architectures for aerial imagery</h3>
-          <p><em>Intelligent Systems with Applications (Under Review)</em></p>
+          <p><em>Intelligent Systems with Applications (Accepted)</em></p>
         </div>
 
         <div class="research-item">
@@ -1809,7 +1834,7 @@
         </section>
 
 <!-- Recommendations Section -->
-<section id="recommendations">
+<!-- <section id="recommendations">
   <div class="container">
     <div class="section-title">
       <h2>Recommendations</h2>
@@ -1874,13 +1899,13 @@
       <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
     </div>
   </div>
-</section>
+</section> -->
 
         <!-- Contact Section -->
 <section id="contact">
   <div class="container">
     <div class="section-title">
-      <h2>Let's Connect</h2>
+      <h2>Contact</h2>
     </div>
     
     <div class="contact-container">
@@ -1943,6 +1968,7 @@
 <script>
 
   // Add this to your JavaScript section
+// ... existing code ...
 document.addEventListener('DOMContentLoaded', () => {
   const newsTabBtns = document.querySelectorAll('.news-tabs .tab-btn');
   const timelineItems = document.querySelectorAll('.timeline-item');
@@ -1958,11 +1984,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Show/hide timeline items based on year
       timelineItems.forEach(item => {
-        const itemYear = item.previousElementSibling?.classList.contains('timeline-year') 
-          ? item.previousElementSibling.textContent.trim()
-          : item.parentElement.querySelector('.timeline-year').textContent.trim();
-
-        if (selectedYear === 'all' || itemYear.includes(selectedYear)) {
+        const itemYear = item.getAttribute('data-year');
+        
+        if (selectedYear === 'all' || 
+            (selectedYear === 'old' && itemYear === 'old') ||
+            (selectedYear === '2024' && itemYear === '2024') ||
+            (selectedYear === '2025' && itemYear === '2025')) {
           item.style.display = 'block';
         } else {
           item.style.display = 'none';
@@ -1971,7 +1998,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Show/hide year markers
       timelineYears.forEach(year => {
-        if (selectedYear === 'all' || year.textContent.trim().includes(selectedYear)) {
+        const yearText = year.getAttribute('data-year');
+        if (selectedYear === 'all' || selectedYear === yearText) {
           year.style.display = 'block';
         } else {
           year.style.display = 'none';
@@ -1980,77 +2008,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-// Recommendations Slider
-const slider = document.querySelector('.recommendations-slider');
-const cards = document.querySelectorAll('.recommendation-card');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const dotsContainer = document.querySelector('.slider-dots');
+// ... existing code ...
+// // Recommendations Slider
+// const slider = document.querySelector('.recommendations-slider');
+// const cards = document.querySelectorAll('.recommendation-card');
+// const prevBtn = document.querySelector('.prev-btn');
+// const nextBtn = document.querySelector('.next-btn');
+// const dotsContainer = document.querySelector('.slider-dots');
 
-let currentSlide = 0;
-let autoSlideInterval;
+// let currentSlide = 0;
+// let autoSlideInterval;
 
-// Create dots
-cards.forEach((_, index) => {
-  const dot = document.createElement('div');
-  dot.classList.add('dot');
-  if (index === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => goToSlide(index));
-  dotsContainer.appendChild(dot);
-});
+// // Create dots
+// cards.forEach((_, index) => {
+//   const dot = document.createElement('div');
+//   dot.classList.add('dot');
+//   if (index === 0) dot.classList.add('active');
+//   dot.addEventListener('click', () => goToSlide(index));
+//   dotsContainer.appendChild(dot);
+// });
 
-const dots = document.querySelectorAll('.dot');
+// const dots = document.querySelectorAll('.dot');
 
-function updateSlider() {
-  cards.forEach((card, index) => {
-    card.classList.remove('active');
-    if (index === currentSlide) {
-      card.classList.add('active');
-    }
-  });
+// function updateSlider() {
+//   cards.forEach((card, index) => {
+//     card.classList.remove('active');
+//     if (index === currentSlide) {
+//       card.classList.add('active');
+//     }
+//   });
   
-  dots.forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentSlide);
-  });
-}
+//   dots.forEach((dot, index) => {
+//     dot.classList.toggle('active', index === currentSlide);
+//   });
+// }
 
-function goToSlide(index) {
-  currentSlide = index;
-  updateSlider();
-  resetAutoSlide();
-}
+// function goToSlide(index) {
+//   currentSlide = index;
+//   updateSlider();
+//   resetAutoSlide();
+// }
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % cards.length;
-  updateSlider();
-}
+// function nextSlide() {
+//   currentSlide = (currentSlide + 1) % cards.length;
+//   updateSlider();
+// }
 
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + cards.length) % cards.length;
-  updateSlider();
-}
+// function prevSlide() {
+//   currentSlide = (currentSlide - 1 + cards.length) % cards.length;
+//   updateSlider();
+// }
 
-function resetAutoSlide() {
-  clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(nextSlide, 5000);
-}
+// function resetAutoSlide() {
+//   clearInterval(autoSlideInterval);
+//   autoSlideInterval = setInterval(nextSlide, 5000);
+// }
 
-prevBtn.addEventListener('click', () => {
-  prevSlide();
-  resetAutoSlide();
-});
+// prevBtn.addEventListener('click', () => {
+//   prevSlide();
+//   resetAutoSlide();
+// });
 
-nextBtn.addEventListener('click', () => {
-  nextSlide();
-  resetAutoSlide();
-});
+// nextBtn.addEventListener('click', () => {
+//   nextSlide();
+//   resetAutoSlide();
+// });
 
-// Start auto-sliding
-resetAutoSlide();
+// // Start auto-sliding
+// resetAutoSlide();
 
-// Pause auto-sliding when hovering over the slider
-slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-slider.addEventListener('mouseleave', resetAutoSlide);
+// // Pause auto-sliding when hovering over the slider
+// slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+// slider.addEventListener('mouseleave', resetAutoSlide);
   // Contact Form and Captcha
 const generateCaptcha = () => {
   const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
