@@ -374,6 +374,22 @@ header {
       background-color: var(--primary);
     }
 
+    /* Journal Ranking Badges */
+.journal-rank {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-left: 8px;
+  color: white;
+}
+
+.rank-q1 { background-color: #4CAF50; }
+.rank-q2 { background-color: #2196F3; }
+.rank-q3 { background-color: #FF9800; }
+.rank-q4 { background-color: #f44336; }
+
     /* Loader */
 .loader-wrapper {
   position: fixed;
@@ -1456,14 +1472,14 @@ header {
       <div class="timeline-item timeline-item-right" data-year="2025">
         <div class="timeline-item-content">
           <h4>September 2025</h4>
-          <p>Reviewd journal articles in <strong> Archives of Computational Methods in Engineering,  npj Heritage Science Artificial Intelligence Review, and Signal, Image and Video Processing journals </strong></p>
+          <p>Reviewd journal articles in <strong> Archives of Computational Methods in Engineering,  npj Heritage Science Artificial Intelligence Review, and Signal, Image and Video Processing </strong> journals.</p>
         </div>
       </div>
 
       <div class="timeline-item timeline-item-right" data-year="2025">
         <div class="timeline-item-content">
           <h4>August 2025</h4>
-          <p>One research paper published in BMC Medical Imaging.</p>
+          <p>One research paper published in <strong>BMC Medical Imaging</strong>.</p>
         </div>
       </div>
       
@@ -1638,59 +1654,46 @@ header {
       </div>
       
       <div class="tab-content active" id="journals">
-
         <div class="research-item">
-          <h3><span class="pub-badge badge-journal">Journal</span> MSFE-GallNet-X: a multi-scale feature extraction-based CNN Model for gallbladder disease analysis with enhanced explainability </h3>
-          <p><em>BMC Medical Imaging (Under Review)</em></p>
+          <h3><span class="pub-badge badge-journal">Journal</span> MSFE-GallNet-X: a multi-scale feature extraction-based CNN Model for gallbladder disease analysis with enhanced explainability</h3>
+          <p><em>BMC Medical Imaging <span class="journal-rank rank-q2">Q2</span>, 2025</em></p>
           <p>This study introduces a domain-adaptive explainable deep learning model utilizing multi-scale feature extraction to improve the classification accuracy of gallbladder diseases from grayscale ultrasound images.</p>
           <a href="https://doi.org/10.1186/s12880-025-01902-y" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
-
-
+      
         <div class="research-item">
           <h3><span class="pub-badge badge-journal">Journal</span> Generative adversarial networks (GANs) in medical imaging: Advancements, applications, and challenges</h3>
-          <p><em>IEEE Access (Q1), 2024</em></p>
+          <p><em>IEEE Access <span class="journal-rank rank-q1">Q1</span>, 2024</em></p>
           <p>This extensive study explores the vast array of applications of GANs in medical imaging, scrutinizing them within recent research. We analyze prevalent datasets, pre-processing techniques, and provide an in-depth discussion of GAN algorithms, elucidating their respective strengths and limitations.</p>
           <a href="https://doi.org/10.1109/ACCESS.2024.3370848" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
-        
+      
         <div class="research-item">
-          <h3><span class="pub-badge badge-journal">Journal</span> TuSegNet: A Transformer-Based and Attention-Enhanced Architecture for Brain
-            Tumor Segmentation</h3>
-          <p><em>IEEE Open Journal of the Computer Society (Q1), 2025</em></p>
-          <p>TuSegNet is a hybrid CNN-transformer model with ASPP and channel attention for brain tumor segmentation. It achieves Dice scores of 0.895, 0.910, and 0.930 on three datasets, surpassing Swin UNet and TransUNet. Ablation studies confirm the effectiveness of each module, showcasing strong performance and clinical relevance.
-          </p>
+          <h3><span class="pub-badge badge-journal">Journal</span> TuSegNet: A Transformer-Based and Attention-Enhanced Architecture for Brain Tumor Segmentation</h3>
+          <p><em>IEEE Open Journal of the Computer Society <span class="journal-rank rank-q1">Q1</span>, 2025</em></p>
+          <p>TuSegNet is a hybrid CNN-transformer model with ASPP and channel attention for brain tumor segmentation. It achieves Dice scores of 0.895, 0.910, and 0.930 on three datasets, surpassing Swin UNet and TransUNet. Ablation studies confirm the effectiveness of each module, showcasing strong performance and clinical relevance.</p>
           <a href="https://doi.org/10.1109/OJCS.2025.3569758" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
-
-
+      
         <div class="research-item">
           <h3><span class="pub-badge badge-journal">Journal</span> Advancements in deep learning architectures for aerial imagery</h3>
-          <p><em>Intelligent Systems with Applications (Q1), 2025</em></p>
-          <p>This review explores recent deep learning models—CNNs, RNNs, GANs, and Transformers—for aerial image analysis. It compares their effectiveness in tasks like classification and segmentation, highlights architectural advances, and outlines future research needs for more robust, efficient, and adaptive solutions.
-          </p>
+          <p><em>Intelligent Systems with Applications <span class="journal-rank rank-q1">Q1</span>, 2025</em></p>
+          <p>This review explores recent deep learning models—CNNs, RNNs, GANs, and Transformers—for aerial image analysis. It compares their effectiveness in tasks like classification and segmentation, highlights architectural advances, and outlines future research needs for more robust, efficient, and adaptive solutions.</p>
           <a href="https://doi.org/10.1016/J.ISWA.2025.200537" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
-
+      
         <div class="research-item">
-          <h3><span class="pub-badge badge-journal">Journal</span> A Physics-Guided Bayesian NeuralNetwork for
-            Sensor Fault Detection in Wind Turbines</h3>
-          <p><em>IEEE Open Journal of the Computer Society (Q1), 2025</em></p>
-          <p>This paper presents a PINN-BNN model combining physics-informed learning and Bayesian inference for wind turbine fault detection. Achieving 97.6% accuracy and 0.987 AUC-ROC, it enhances interpretability, reduces false negatives, and outperforms 10 baselines, enabling reliable, efficient predictive maintenance in wind energy systems.
-          </p>
+          <h3><span class="pub-badge badge-journal">Journal</span> A Physics-Guided Bayesian Neural Network for Sensor Fault Detection in Wind Turbines</h3>
+          <p><em>IEEE Open Journal of the Computer Society <span class="journal-rank rank-q1">Q1</span>, 2025</em></p>
+          <p>This paper presents a PINN-BNN model combining physics-informed learning and Bayesian inference for wind turbine fault detection. Achieving 97.6% accuracy and 0.987 AUC-ROC, it enhances interpretability, reduces false negatives, and outperforms 10 baselines, enabling reliable, efficient predictive maintenance in wind energy systems.</p>
           <a href="https://doi.org/10.1109/OJCS.2025.3577588" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
-
-
+      
         <div class="research-item">
-          <h3><span class="pub-badge badge-journal">Journal</span> An
-            Interpretable Deep Learning Framework for Multi-Scale Diagnosis of Gastrointestinal Conditions Across
-            Adult and Pediatric Populations </h3>
-          <p><em>Computer Methods and Programs in Biomedicine (Under Review) </em></p>
-          <!-- <p>This paper presents a PINN-BNN model combining physics-informed learning and Bayesian inference for wind turbine fault detection. Achieving 97.6% accuracy and 0.987 AUC-ROC, it enhances interpretability, reduces false negatives, and outperforms 10 baselines, enabling reliable, efficient predictive maintenance in wind energy systems.
-          </p>
-          <a href="https://doi.org/10.1109/OJCS.2025.3577588" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a> -->
+          <h3><span class="pub-badge badge-journal">Journal</span> An Interpretable Deep Learning Framework for Multi-Scale Diagnosis of Gastrointestinal Conditions Across Adult and Pediatric Populations</h3>
+          <p><em>Computer Methods and Programs in Biomedicine (Under Review)</em></p>
         </div>
+      
 
 
         <!-- <div class="research-item">
@@ -1744,8 +1747,9 @@ header {
       
       <div class="tab-content" id="books">
         <div class="research-item">
-          <h3><span class="pub-badge badge-book">Book Chapter</span> Banana leaf spot disease detection using deep learning-based algorithms</h3>
-          <p><em>Machine Vision in Plant Leaf Disease Detection for Sustainable Agriculture (Accepted)</em></p>
+          <h3><span class="pub-badge badge-book">Book Chapter</span> Deep Learning Algorithms for Detecting Banana Leaf Spot Diseases </h3>
+          <p><em>Machine Vision in Plant Leaf Disease Detection for Sustainable Agriculture <span class="journal-rank rank-q4">Q4</span>, 2025</em></p>
+          <a href="https://link.springer.com/chapter/10.1007/978-981-96-4520-6_13" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a>
         </div>
       </div>
     </div>
