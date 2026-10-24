@@ -1,3 +1,3 @@
-remote_theme: riggraz/no-style-please
-
-# jekyll-theme-minimal
+# Jekyll is disabled via .nojekyll — this site is deployed as plain static HTML.
+# The previous theme reference is kept here, commented out and inert:
+# remote_theme: riggraz/no-style-please

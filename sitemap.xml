@@ -4,13 +4,30 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://nabil0day.github.io/</loc>
-  <lastmod>2024-11-26T05:17:22+00:00</lastmod>
+  <lastmod>2026-10-25</lastmod>
 </url>
 
+<url>
+  <loc>https://nabil0day.github.io/news.html</loc>
+  <lastmod>2026-10-25</lastmod>
+</url>
+
+<url>
+  <loc>https://nabil0day.github.io/research.html</loc>
+  <lastmod>2026-10-25</lastmod>
+</url>
+
+<url>
+  <loc>https://nabil0day.github.io/projects.html</loc>
+  <lastmod>2026-10-25</lastmod>
+</url>
+
+<url>
+  <loc>https://nabil0day.github.io/contact.html</loc>
+  <lastmod>2026-10-25</lastmod>
+</url>
 
 </urlset>
