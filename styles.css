@@ -214,10 +214,7 @@ header {
     }
     
     .hero-container {
-      display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 2rem;
-  align-items: flex-start; 
+      display: block;
     }
     .hero-content {
   padding-top: 2rem; /* Add some padding at the top */
@@ -248,21 +245,6 @@ header {
       margin-bottom: 0.5rem;
     }
     
-    .hero-image {
-      text-align: center;
-    }
-    
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 50%;
-      box-shadow: var(--shadow);
-      border: 5px solid var(--card-bg);
-      transition: var(--transition);
-    }
-    
-    .hero-image img:hover {
-      transform: scale(1.03);
-    }
     
     /* Section Styles */
     section {
@@ -991,18 +973,6 @@ header {
     
     /* Responsive Design */
     @media (max-width: 992px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-image {
-        order: -1;
-      }
-      
-      .hero-image img {
-        max-width: 60%;
-      }
-      
       .timeline::after {
         left: 31px;
       }
@@ -1071,10 +1041,6 @@ header {
     }
 
     @media (max-width: 576px) {
-      .hero-image img {
-        max-width: 70%;
-      }
-      
       .social-links {
         justify-content: center;
       }
@@ -1204,12 +1170,11 @@ header {
     opacity: 1;
     visibility: visible;
     transform: none;
+    padding-left: 1rem;
   }
-
-  /* `.nav ul { padding: 0 }` zeroes the menu's own padding, so the items
-     carry the inset themselves — indented past the parent "More" label. */
+  
   .dropdown-item {
-    padding: 0.65rem 1.25rem 0.65rem 2rem;
+    padding: 0.5rem 0;
   }
 }
 
@@ -1459,6 +1424,58 @@ section {
 .social-links {
   margin-top: 1.25rem;
   gap: 0.5rem;
+}
+
+/* Portrait floated into the bio; text wraps alongside it */
+.hero-photo {
+  float: right;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin: 0.25rem 0 1rem 1.75rem;
+  border-radius: 8px;
+  border: 4px solid var(--card-bg);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.hero-photo:hover {
+  transform: scale(1.03);
+}
+
+/* Below this width the text column is too narrow to wrap around the photo */
+@media (max-width: 576px) {
+  .hero-photo {
+    float: none;
+    display: block;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1rem;
+  }
+}
+
+/* In-page index linking the section groups */
+.index-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.index-list a {
+  font-family: var(--font-stack);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-link);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.index-list a:hover {
+  border-bottom-color: var(--color-link);
 }
 
 .btn i,
